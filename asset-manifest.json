@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/banktask/static/js/main.2a5d74cd.js",
+    "index.html": "/banktask/index.html",
+    "main.2a5d74cd.js.map": "/banktask/static/js/main.2a5d74cd.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.2a5d74cd.js"
+  ]
+}
