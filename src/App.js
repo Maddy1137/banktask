@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import LoginPage from "./components/login";
+import RegistrationPage from "./components/register";
+import TransactionsPage from "./components/TransactionsPageNew";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  const handleLogin = (data) => {
+    setUser(data);
+  };
+
+  const handleRegister = (data) => {
+    setUser(data);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route
+          path="/"
+          element={<RegistrationPage onRegister={handleRegister} />}
+        />
+        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+        <Route
+          path="/transactions/:username" // Pass username as a parameter
+          element={
+            user ? (
+              <TransactionsPage user={user} />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+        {/* Add other routes here */}
+      </Routes>
     </div>
   );
 }
